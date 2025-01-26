@@ -8,13 +8,11 @@ const Login = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
     }
-  
-    /*
+    
     const handleLogin = () => {
       setToken("this is a test token");
       navigate("/", { replace: true });
     };
-    */
   
     return <div className="bg-slate-400 min-h-screen h-full flex">
         <div className="bg-white w-8/12 px-4 py-3 mx-auto my-5 shadow-xl">

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import '../index.css'
 
 function ListStaffs() {
-    const url = "http://localhost:8080";
+    const url = "go-uas-backend-production.up.railway.app:8080";
 
     interface Meeting {
         meeting_id  : number,
