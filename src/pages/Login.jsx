@@ -1,12 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../providers/AuthProvider";
+import axios from "axios";
 
 const Login = () => {
+    const url = "localhost:8080";
+
     const { setToken } = useAuth();
     const navigate = useNavigate();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+
+        const form = document.forms["login_form"];
+
+        const formData = {
+            email: form["email"].value,
+            password: form["password"].value,
+        };
+
+        axios.post(`${url}/api/login`, formData);
     }
     
     const handleLogin = () => {
@@ -21,8 +33,13 @@ const Login = () => {
             <form onSubmit={handleSubmit} name="login_form">
                 <div>
                     <p>Email</p>
-                    <input type="email" name="email" />
+                    <input type="email" name="email" className="border border-slate-400" required />
+                    <p>Password</p>
+                    <input type="password" name="password" className="border border-slate-400" required />
+
+                    
                 </div>
+                <button type="submit">LOGIN</button>
             </form>
         </div>
     </div>;

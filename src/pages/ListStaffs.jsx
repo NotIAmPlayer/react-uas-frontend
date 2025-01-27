@@ -1,24 +1,14 @@
 import { useEffect, useState } from 'react'
 import '../index.css'
 
-function ListMeetings() {
+function ListStaffs() {
     const url = "go-uas-backend-production.up.railway.app:8080";
 
-    interface Meeting {
-        meeting_id  : number,
-        title       : string,
-        description : string,
-        meeting_date: string,
-        start_time  : string,
-        end_time    : string,
-        meeting_type: string,
-    }
-
-    const [meetingData, setMeetingData] = useState([] as Meeting[]);
-
+    const [meetingData, setMeetingData] = useState([]);
+    
     useEffect(() => {
 
-        fetch(`${url}/api/meetings`).then((response) => response.json()).then((data) => {
+        fetch(`${url}/api/staffs`).then((response) => response.json()).then((data) => {
             setMeetingData(data);
         });
     }, []);
@@ -28,18 +18,18 @@ function ListMeetings() {
             <nav className="w-3/12 bg-slate-600 min-h-screen h-max overflow-none py-8 text-white shadow-2xl shadow-slate-700">
                 <p className="font-bold text-2xl px-6">DASHBOARD</p>
                 <a
-                    href="#"
-                    className="block py-2 my-2 px-8 border-b border-transparent bg-white
+                    href="/meetings/"
+                    className="block py-2 my-2 px-8 border-b border-slate-400
                     font-semibold transition motion-reduce:transition-none ease-out
-                    duration-150 text-black hover:bg-amber-400"
+                    duration-150 hover:text-black hover:bg-amber-400 hover:border-transparent"
                 >
                     Meetings
                 </a>
                 <a
-                    href="/staffs/"
-                    className="block py-2 my-2 px-8 border-b border-slate-400
+                    href="#"
+                    className="block py-2 my-2 px-8 border-b border-transparent bg-white
                     font-semibold transition motion-reduce:transition-none ease-out
-                    duration-150 hover:text-black hover:bg-amber-400 hover:border-transparent"
+                    duration-150 text-black hover:bg-amber-400"
                 >
                     Staff
                 </a>
@@ -96,4 +86,4 @@ function ListMeetings() {
     )
 }
 
-export default ListMeetings
+export default ListStaffs
