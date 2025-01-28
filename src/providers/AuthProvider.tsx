@@ -1,12 +1,16 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 
-const AuthContext = createContext("");
+const AuthContext = createContext<{token: null | string, setToken: (token: string) => void}>({token: null, setToken: function() {}});
 
-const AuthProvider = ({ children }) => {
+interface AuthProviderProps {
+    children: ReactNode
+}
+
+const AuthProvider = ({ children }: AuthProviderProps) => {
     const [token, setToken_] = useState(localStorage.getItem("token"));
 
-    const setToken = (newToken) => {
+    const setToken = (newToken: string) => {
         setToken_(newToken);
     };
 

@@ -1,8 +1,10 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { useAuth } from "../providers/AuthProvider.jsx";
+import { useAuth } from "../providers/AuthProvider.js";
 import { ProtectedRoute } from "./ProtectedRoute.tsx";
-import Login from "../pages/Login.jsx";
-import Logout from "../pages/Logout.jsx";
+import Login from "../pages/Login.js";
+import Logout from "../pages/Logout.js";
+import ListMeetings from "../pages/ListMeetings.tsx";
+import ListStaffs from "../pages/ListStaffs.tsx";
 
 const Routes = () => {
   const { token } = useAuth();
@@ -26,12 +28,12 @@ const Routes = () => {
       element: <ProtectedRoute />, // Wrap the component in ProtectedRoute
       children: [
         {
-          path: "/",
-          element: <div>User Home Page</div>,
+          path: "/meetings/",
+          element: <ListMeetings />,
         },
         {
-          path: "/profile",
-          element: <div>User Profile</div>,
+          path: "/staffs/",
+          element: <ListStaffs />,
         },
         {
           path: "/logout",

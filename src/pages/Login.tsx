@@ -8,7 +8,7 @@ const Login = () => {
     const { setToken } = useAuth();
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         const form = document.forms["login_form"];
@@ -18,12 +18,13 @@ const Login = () => {
             password: form["password"].value,
         };
 
-        axios.post(`${url}/api/login`, formData);
+        //axios.post(`${url}/api/login`, formData);
+        handleLogin();
     }
     
     const handleLogin = () => {
-      setToken("this is a test token");
-      navigate("/", { replace: true });
+        setToken("this is a test token");
+        navigate("/", { replace: true });
     };
   
     return <div className="bg-slate-400 min-h-screen h-full flex">
